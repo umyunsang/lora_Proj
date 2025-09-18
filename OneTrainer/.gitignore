@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model files
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+*.bin
+
+# Training outputs
+workspace/
+workspace-cache/
+models/
+outputs/
+logs/
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Hugging Face cache
+.cache/
+.huggingface/
+
+# Training data (optional - 용량이 크면 제외)
+training_data/
+datasets/
+images/
+
+# TensorBoard logs
+runs/
+tensorboard/

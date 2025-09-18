@@ -1,0 +1,8 @@
+[
+    {
+        "name": "test_concept",
+        "path": "/tmp/test_images",
+        "prompt": "a photo of a person",
+        "resolution": "512"
+    }
+]

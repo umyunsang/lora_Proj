@@ -1,0 +1,22 @@
+{
+    "backup_after": 5,
+    "base_model_name": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+    "batch_size": 1,
+    "learning_rate": 0.0001,
+    "max_train_epochs": 1,
+    "model_type": "STABLE_DIFFUSION_15",
+    "output_model_destination": "models/test_lora.safetensors",
+    "output_model_format": "SAFETENSORS",
+    "resolution": "512",
+    "training_method": "LORA",
+    "vae": {
+        "weight_dtype": "FLOAT_32"
+    },
+    "weight_dtype": "FLOAT_16",
+    "concept": {
+        "name": "test_concept",
+        "path": "/tmp/test_images",
+        "prompt": "a photo of a person",
+        "resolution": "512"
+    }
+}
