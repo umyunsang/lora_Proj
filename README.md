@@ -1,6 +1,6 @@
-# OneTrainer LoRA Project
+# OneTrainer + ComfyUI LoRA Project
 
-SSH 서버 환경에서 OneTrainer를 사용한 LoRA 훈련 프로젝트입니다.
+SSH 서버 환경에서 OneTrainer와 ComfyUI를 사용한 LoRA 훈련 및 이미지 생성 프로젝트입니다.
 
 ## 🔄 워크플로우
 
@@ -35,7 +35,8 @@ nohup ./run-cmd.sh train --config-path config.json > training.log 2>&1 &
 ```
 lora_project/
 ├── README.md                    # 이 파일
-└── OneTrainer/                  # OneTrainer 메인 폴더
+├── OneTrainer/                  # OneTrainer 메인 폴더
+└── ComfyUI/                     # ComfyUI 메인 폴더
     ├── run-cmd.sh              # 스크립트 실행기
     ├── start-ui.sh             # GUI 실행 스크립트
     ├── .gitignore              # Git 제외 파일 설정
@@ -63,18 +64,30 @@ lora_project/
         └── run/
             ├── config/         # 훈련 설정 백업
             └── tensorboard/    # TensorBoard 로그
+    │
+    └── ComfyUI/                # ComfyUI 메인 폴더
+        ├── main.py             # ComfyUI 실행 스크립트
+        ├── models/             # 모델 저장소 (Git 제외)
+        ├── output/             # 생성 이미지 출력 (Git 제외)
+        ├── input/              # 입력 이미지 폴더
+        ├── custom_nodes/       # 커스텀 노드들 (Git 제외)
+        └── web/                # 웹 인터페이스
 ```
 
 ## 🚀 주요 사용법
 
-### GUI에서 설정 (로컬)
+### OneTrainer - LoRA 훈련
+
+#### GUI에서 설정 (로컬)
 1. `start-ui.sh` 실행하여 GUI 열기
 2. 모델 타입, 학습률, 배치 크기 등 설정
 3. 훈련 데이터 경로 설정
 4. 설정 파일 저장 후 Git 커밋
 
-### CLI에서 훈련 (서버)
+#### CLI에서 훈련 (서버)
 ```bash
+cd OneTrainer
+
 # 기본 훈련
 ./run-cmd.sh train --config-path training_presets/#sd\ 1.5\ LoRA.json
 
@@ -88,6 +101,22 @@ lora_project/
 # 모델 변환
 ./run-cmd.sh convert_model --input-path input.ckpt --output-path output.safetensors
 ```
+
+### ComfyUI - 이미지 생성
+
+#### 서버에서 ComfyUI 실행
+```bash
+cd ComfyUI
+source venv/bin/activate
+python main.py --listen 0.0.0.0 --port 8188
+
+# 백그라운드 실행
+nohup python main.py --listen 0.0.0.0 --port 8188 > comfyui.log 2>&1 &
+```
+
+#### 웹 브라우저에서 접속
+- **로컬 접속**: http://localhost:8188
+- **원격 접속**: http://[서버IP]:8188
 
 ## ⚙️ 환경 설정
 
